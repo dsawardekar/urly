@@ -1,0 +1,10 @@
+{
+  "src/Urly/*.php": {
+    "type": "library",
+    "test": "tests/Urly/%sTest.php"
+  },
+  "tests/Urly/*Test.php": {
+    "type": "test",
+    "alternate": "src/Urly/%s.php"
+  }
+}

@@ -1,0 +1,12 @@
+#!/usr/bin/php
+<?php
+
+require_once(__DIR__ . '/../vendor/autoload.php');
+
+use Urly\App;
+
+$app = new App();
+$app->run();
+
+?>
+

@@ -1,0 +1,5 @@
+*.swp
+*.swo
+vendor
+notes.txt
+tmp
