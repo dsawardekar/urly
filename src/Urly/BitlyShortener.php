@@ -2,9 +2,9 @@
 
 namespace Urly;
 
-use Urly\IShortner;
+use Urly\IShortener;
 
-class BitlyShortner {
+class BitlyShortener {
 
   function needs() {
     return array('bitly_api_key', 'bitly_login');

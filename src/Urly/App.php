@@ -5,6 +5,8 @@ namespace Urly;
 use Encase\Container;
 use Urly\Options;
 use Urly\Version;
+use Urly\BitlyShortener;
+use Urly\LongurlExpander;
 
 class App {
 
@@ -16,8 +18,8 @@ class App {
          ->object('options', new Options())
          ->object('bitly_api_key', getenv('BITLY_API_KEY'))
          ->object('bitly_login', getenv('BITLY_LOGIN'))
-         ->factory('url_shortener', new BitlyShortner())
-         ->factory('url_expander', new LongurlExpander());
+         ->factory('url_shortener', 'Urly\BitlyShortener')
+         ->factory('url_expander', 'Urly\LongurlExpander');
   }
 
   function run() {

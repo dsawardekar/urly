@@ -2,30 +2,30 @@
 
 namespace Urly;
 
-use Urly\BitlyShortner;
+use Urly\BitlyShortener;
 use Encase\Container;
 
-class BitlyShortnerTest extends \PHPUnit_Framework_TestCase {
+class BitlyShortenerTest extends \PHPUnit_Framework_TestCase {
 
   function setup() {
     $this->container = new Container();
     $this->container->object('bitly_api_key', getenv('BITLY_API_KEY'));
     $this->container->object('bitly_login', getenv('BITLY_LOGIN'));
-    $this->container->object('shortner', new BitlyShortner());
+    $this->container->object('shortener', new BitlyShortener());
 
-    $this->shortner = $this->container->lookup('shortner');
+    $this->shortener = $this->container->lookup('shortener');
   }
 
   function test_it_an_api_key() {
-    $this->assertNotEmpty($this->shortner->bitly_api_key);
+    $this->assertNotEmpty($this->shortener->bitly_api_key);
   }
 
   function test_it_has_an_api_login() {
-    $this->assertNotEmpty($this->shortner->bitly_login);
+    $this->assertNotEmpty($this->shortener->bitly_login);
   }
 
   function test_it_can_build_bitly_query_url() {
-    $queryUrl = $this->shortner->build('http://php.net/');
+    $queryUrl = $this->shortener->build('http://php.net/');
     $this->assertRegExp(
       '/^http:\/\/api.bitly.com\/v3\/shorten/',
       $queryUrl
@@ -33,17 +33,17 @@ class BitlyShortnerTest extends \PHPUnit_Framework_TestCase {
   }
 
   function test_it_can_fetch_remote_url() {
-    $response = $this->shortner->fetch('http://google.com/robots.txt');
+    $response = $this->shortener->fetch('http://google.com/robots.txt');
     $this->assertNotEmpty($response);
   }
 
   function test_it_can_parse_json_response() {
-    $json = $this->shortner->parse('{ "foo": "bar" }');
+    $json = $this->shortener->parse('{ "foo": "bar" }');
     $this->assertEquals('bar', $json['foo']);
   }
 
   function test_it_can_shorten_url_using_bitly_api() {
-    $shortUrl = $this->shortner->shorten('http://php.net/');
+    $shortUrl = $this->shortener->shorten('http://php.net/');
     $this->assertEquals('http://bit.ly/1lbLL7F', $shortUrl);
   }
 
