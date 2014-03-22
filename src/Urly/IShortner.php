@@ -2,7 +2,7 @@
 
 namespace Urly;
 
-interface IShortner {
+interface IShortener {
 
   public function shorten($url);
 

@@ -2,16 +2,16 @@
 
 namespace Urly;
 
-use Urly\BitlyShortner;
+use Urly\BitlyShortener;
 use Encase\Container;
 
-class BitlyShortnerTest extends \PHPUnit_Framework_TestCase {
+class BitlyShortenerTest extends \PHPUnit_Framework_TestCase {
 
   function setup() {
     $this->container = new Container();
     $this->container->object('bitly_api_key', getenv('BITLY_API_KEY'));
     $this->container->object('bitly_login', getenv('BITLY_LOGIN'));
-    $this->container->object('shortner', new BitlyShortner());
+    $this->container->object('shortner', new BitlyShortener());
 
     $this->shortner = $this->container->lookup('shortner');
   }
