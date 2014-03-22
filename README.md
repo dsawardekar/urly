@@ -12,14 +12,14 @@ It was written to illustrate [Dependency Injection in Encase][3].
 To shorten any URL use the `--shorten` option or it's shorter version `-s`.
 
 ```bash
-bin/urly --shorten http://long-url-here.com
+$ bin/urly --shorten http://long-url-here.com
 ```
 
 And to expand a shortened url use the `--expand` option or it's shorter
 version `-e`.
 
 ```bash
-bin/urly --expand http://short.url
+$ bin/urly --expand http://short.url
 ```
 
 ## Requirements
